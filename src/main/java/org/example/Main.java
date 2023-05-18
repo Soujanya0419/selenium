@@ -10,5 +10,6 @@ public class Main {
         driver.get("https://www.google.com");
         System.out.println("Driver launched...");
         driver.close();
+        System.out.println("Test completed");
     }
 }
