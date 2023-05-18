@@ -13,6 +13,6 @@ public class Main {
         driver.close();
         System.out.println("Test completed");
         System.out.println("I will do more commits");
-        System.out.println("logout");
+        System.out.println("logout completed..");
     }
 }
