@@ -12,5 +12,6 @@ public class Main {
         System.out.println("Driver launched...");
         driver.close();
         System.out.println("Test completed");
+        System.out.println("I will do more commits");
     }
 }
