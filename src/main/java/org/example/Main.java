@@ -13,6 +13,8 @@ public class Main {
         driver.close();
         System.out.println("Test completed");
         System.out.println("I will do more commits");
+        System.out.println("logout completed..");
+        System.out.println("QA Changes");
         System.out.println("logout completed commit 1");
         System.out.println("I am the admin..");
 
