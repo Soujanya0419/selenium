@@ -4,6 +4,10 @@
     <test name="Test Basics 1">
         <classes>
             <class name="Test1"/>
+            <class name="practice"/>
+            <class name="launch"/>
+            <class name="close"/>
+
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

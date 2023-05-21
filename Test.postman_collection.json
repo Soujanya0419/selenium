@@ -1,0 +1,1390 @@
+{
+	"info": {
+		"_postman_id": "4e771d61-1729-49ab-b6c4-fa3401afe583",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27052311",
+		"_collection_link": "https://red-firefly-991240.postman.co/workspace/learning~9a26dd21-5709-4172-b937-78946a24b23c/collection/27052311-4e771d61-1729-49ab-b6c4-fa3401afe583?action=share&creator=27052311&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var abc=pm.response.json()\r",
+							"console.log(abc.access_token)\r",
+							"\r",
+							"pm.environment.set(\"AccessToken\", abc.access_token);\r",
+							"\r",
+							"pm.test(\"response status 200\",function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})\r",
+							"pm.test(\"respose status ok\",function(){\r",
+							"    pm.expect(pm.response.status).to.equal('OK')\r",
+							"})\r",
+							"pm.test(\"response time\",function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(10000)\r",
+							"})\r",
+							"pm.test(\"response header\",function(){\r",
+							"    pm.response.to.have.header('Content-Type')\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-US,en;q=0.9,ja;q=0.8"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Origin",
+						"value": "https://spartacus-demo.eastus.cloudapp.azure.com"
+					},
+					{
+						"key": "Referer",
+						"value": "https://spartacus-demo.eastus.cloudapp.azure.com/"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty",
+						"disabled": true
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors",
+						"disabled": true
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-site",
+						"disabled": true
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\"",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "mobile_android",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "secret",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "soujanya.ram8@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Ishaan@123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://spartacus-demo.eastus.cloudapp.azure.com:8443/authorizationserver/oauth/token",
+					"protocol": "https",
+					"host": [
+						"spartacus-demo",
+						"eastus",
+						"cloudapp",
+						"azure",
+						"com"
+					],
+					"port": "8443",
+					"path": [
+						"authorizationserver",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response status 200\",function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})\r",
+							"pm.test(\"respose status ok\",function(){\r",
+							"    pm.expect(pm.response.status).to.equal('OK')\r",
+							"})\r",
+							"pm.test(\"response time\",function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(20000)\r",
+							"})\r",
+							"pm.test(\"response header\",function(){\r",
+							"    pm.response.to.have.header('Content-Type')\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-US,en;q=0.9,ja;q=0.8"
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer {{AccessToken}}"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Origin",
+						"value": "https://spartacus-demo.eastus.cloudapp.azure.com"
+					},
+					{
+						"key": "Referer",
+						"value": "https://spartacus-demo.eastus.cloudapp.azure.com/"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors",
+						"disabled": true
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-site",
+						"disabled": true
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
+						"disabled": true
+					},
+					{
+						"key": "X-Anonymous-Consents",
+						"value": "%5B%7B%22templateCode%22%3A%22MARKETING_NEWSLETTER%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%2C%7B%22templateCode%22%3A%22PROFILE%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%2C%7B%22templateCode%22%3A%22STORE_USER_INFORMATION%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%5D",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\"",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://spartacus-demo.eastus.cloudapp.azure.com:8443/occ/v2/electronics-spa/cms/pages?pageType=ProductPage&code=CONF_CAMERA_SL&lang=en&curr=USD",
+					"protocol": "https",
+					"host": [
+						"spartacus-demo",
+						"eastus",
+						"cloudapp",
+						"azure",
+						"com"
+					],
+					"port": "8443",
+					"path": [
+						"occ",
+						"v2",
+						"electronics-spa",
+						"cms",
+						"pages"
+					],
+					"query": [
+						{
+							"key": "pageType",
+							"value": "ProductPage"
+						},
+						{
+							"key": "code",
+							"value": "CONF_CAMERA_SL"
+						},
+						{
+							"key": "lang",
+							"value": "en"
+						},
+						{
+							"key": "curr",
+							"value": "USD"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateCart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var abc=pm.response.json();\r",
+							"console.log(abc.carts[0].code)\r",
+							"\r",
+							"pm.environment.set(\"CartId\",abc.carts[0].code)\r",
+							"\r",
+							"pm.test(\"response status 200\",function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})\r",
+							"pm.test(\"respose status ok\",function(){\r",
+							"    pm.expect(pm.response.status).to.equal('OK')\r",
+							"})\r",
+							"pm.test(\"response time\",function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(1000)\r",
+							"})\r",
+							"pm.test(\"response header\",function(){\r",
+							"    pm.response.to.have.header('Content-Type')\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"connection": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AccessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{BaseUrl}}/occ/v2/electronics-spa/users/current/carts",
+					"protocol": "https",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"occ",
+						"v2",
+						"electronics-spa",
+						"users",
+						"current",
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Addtocart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response status 200\",function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})\r",
+							"pm.test(\"respose status ok\",function(){\r",
+							"    pm.expect(pm.response.status).to.equal('OK')\r",
+							"})\r",
+							"pm.test(\"response time\",function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(10000)\r",
+							"})\r",
+							"pm.test(\"response header\",function(){\r",
+							"    pm.response.to.have.header('Content-Type')\r",
+							"})\r",
+							"var xyz=pm.response.json();\r",
+							"console.log(xyz.entry.product.categories[0].name)\r",
+							"console.log(xyz.entry.quantity)\r",
+							"console.log(xyz.entry.totalPrice.value)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-US,en;q=0.9,ja;q=0.8"
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer {{AccessToken}}"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Origin",
+						"value": "https://spartacus-demo.eastus.cloudapp.azure.com"
+					},
+					{
+						"key": "Referer",
+						"value": "https://spartacus-demo.eastus.cloudapp.azure.com/"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty",
+						"disabled": true
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors",
+						"disabled": true
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-site",
+						"disabled": true
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
+						"disabled": true
+					},
+					{
+						"key": "X-Anonymous-Consents",
+						"value": "%5B%7B%22templateCode%22%3A%22MARKETING_NEWSLETTER%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%2C%7B%22templateCode%22%3A%22PROFILE%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%2C%7B%22templateCode%22%3A%22STORE_USER_INFORMATION%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%5D",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"quantity\":1,\"product\":{\"code\":\"553637\"}}"
+				},
+				"url": {
+					"raw": "https://{{BaseUrl}}/occ/v2/electronics-spa/users/current/carts/{{CartId}}/entries?lang=en&curr=USD",
+					"protocol": "https",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"occ",
+						"v2",
+						"electronics-spa",
+						"users",
+						"current",
+						"carts",
+						"{{CartId}}",
+						"entries"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "en"
+						},
+						{
+							"key": "curr",
+							"value": "USD"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddAddress",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response status 201\",function(){\r",
+							"    pm.expect(pm.response.code).to.equal(201)\r",
+							"})\r",
+							"pm.test(\"respose status Created\",function(){\r",
+							"    pm.expect(pm.response.status).to.equal('Created')\r",
+							"})\r",
+							"pm.test(\"response time\",function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(10000)\r",
+							"})\r",
+							"pm.test(\"response header\",function(){\r",
+							"    pm.response.to.have.header('Content-Type')\r",
+							"})\r",
+							"var xyz=pm.response.json();\r",
+							"console.log(xyz)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-US,en;q=0.9,ja;q=0.8"
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer {{AccessToken}}"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Origin",
+						"value": "https://spartacus-demo.eastus.cloudapp.azure.com"
+					},
+					{
+						"key": "Referer",
+						"value": "https://spartacus-demo.eastus.cloudapp.azure.com/"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-site"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "X-Anonymous-Consents",
+						"value": "%5B%7B%22templateCode%22%3A%22MARKETING_NEWSLETTER%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%2C%7B%22templateCode%22%3A%22PROFILE%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%2C%7B%22templateCode%22%3A%22STORE_USER_INFORMATION%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%5D",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\"",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"country\":{\"isocode\":\"DE\"},\"titleCode\":\"mr\",\"firstName\":\"Ishaan\",\"lastName\":\"ishaan\",\"line1\":\"ishaan\",\"line2\":\"\",\"town\":\"ishaan\",\"postalCode\":\"11112\",\"phone\":\"\",\"cellphone\":\"\",\"defaultAddress\":false}"
+				},
+				"url": {
+					"raw": "https://{{BaseUrl}}/occ/v2/electronics-spa/users/current/carts/{{CartId}}/addresses/delivery?lang=en&curr=USD",
+					"protocol": "https",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"occ",
+						"v2",
+						"electronics-spa",
+						"users",
+						"current",
+						"carts",
+						"{{CartId}}",
+						"addresses",
+						"delivery"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "en"
+						},
+						{
+							"key": "curr",
+							"value": "USD"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDeliveryModes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response status 200\",function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})\r",
+							"pm.test(\"respose status ok\",function(){\r",
+							"    pm.expect(pm.response.status).to.equal('OK')\r",
+							"})\r",
+							"pm.test(\"response time\",function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(10000)\r",
+							"})\r",
+							"var abc=pm.response.json();\r",
+							"console.log(abc.deliveryModes[0].code)\r",
+							"console.log(abc.deliveryModes[0].description)\r",
+							"console.log(abc.deliveryModes[0].name)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-US,en;q=0.9,ja;q=0.8"
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer {{AccessToken}}"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Origin",
+						"value": "https://spartacus-demo.eastus.cloudapp.azure.com"
+					},
+					{
+						"key": "Referer",
+						"value": "https://spartacus-demo.eastus.cloudapp.azure.com/"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-site"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "X-Anonymous-Consents",
+						"value": "%5B%7B%22templateCode%22%3A%22MARKETING_NEWSLETTER%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%2C%7B%22templateCode%22%3A%22PROFILE%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%2C%7B%22templateCode%22%3A%22STORE_USER_INFORMATION%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%5D"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					}
+				],
+				"url": {
+					"raw": "https://{{BaseUrl}}/occ/v2/electronics-spa/users/current/carts/{{CartId}}/deliverymodes?lang=en&curr=USD",
+					"protocol": "https",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"occ",
+						"v2",
+						"electronics-spa",
+						"users",
+						"current",
+						"carts",
+						"{{CartId}}",
+						"deliverymodes"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "en"
+						},
+						{
+							"key": "curr",
+							"value": "USD"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeliveryMethods",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response status 200\",function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})\r",
+							"pm.test(\"respose status ok\",function(){\r",
+							"    pm.expect(pm.response.status).to.equal('OK')\r",
+							"})\r",
+							"pm.test(\"response time\",function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(10000)\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-US,en;q=0.9,ja;q=0.8"
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer {{AccessToken}}"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Origin",
+						"value": "https://spartacus-demo.eastus.cloudapp.azure.com"
+					},
+					{
+						"key": "Referer",
+						"value": "https://spartacus-demo.eastus.cloudapp.azure.com/"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-site"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
+						"disabled": true
+					},
+					{
+						"key": "X-Anonymous-Consents",
+						"value": "%5B%7B%22templateCode%22%3A%22MARKETING_NEWSLETTER%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%2C%7B%22templateCode%22%3A%22PROFILE%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%2C%7B%22templateCode%22%3A%22STORE_USER_INFORMATION%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%5D",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\"",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "https://{{BaseUrl}}/occ/v2/electronics-spa/users/current/carts/{{CartId}}/deliverymode?deliveryModeId=standard-gross&lang=en&curr=USD",
+					"protocol": "https",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"occ",
+						"v2",
+						"electronics-spa",
+						"users",
+						"current",
+						"carts",
+						"{{CartId}}",
+						"deliverymode"
+					],
+					"query": [
+						{
+							"key": "deliveryModeId",
+							"value": "standard-gross"
+						},
+						{
+							"key": "lang",
+							"value": "en"
+						},
+						{
+							"key": "curr",
+							"value": "USD"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Payment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response status 200\",function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"})\r",
+							"pm.test(\"respose status ok\",function(){\r",
+							"    pm.expect(pm.response.status).to.equal('OK')\r",
+							"})\r",
+							"pm.test(\"response time\",function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(10000)\r",
+							"})\r",
+							"pm.test(\"response header\",function(){\r",
+							"    pm.response.to.have.header('Content-Type')\r",
+							"})\r",
+							"var result=pm.response.json();\r",
+							"console.log(result.accountHolderName)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-US,en;q=0.9,ja;q=0.8"
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer {{AccessToken}}"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Origin",
+						"value": "https://spartacus-demo.eastus.cloudapp.azure.com"
+					},
+					{
+						"key": "Referer",
+						"value": "https://spartacus-demo.eastus.cloudapp.azure.com/"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors",
+						"disabled": true
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-site",
+						"disabled": true
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
+						"disabled": true
+					},
+					{
+						"key": "X-Anonymous-Consents",
+						"value": "%5B%7B%22templateCode%22%3A%22MARKETING_NEWSLETTER%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%2C%7B%22templateCode%22%3A%22PROFILE%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%2C%7B%22templateCode%22%3A%22STORE_USER_INFORMATION%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%5D",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\"",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "billTo_city",
+							"value": "ishaan",
+							"type": "text"
+						},
+						{
+							"key": "billTo_email",
+							"value": "soujanya.ram8@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "shipTo_lastName",
+							"value": "ishaan",
+							"type": "text"
+						},
+						{
+							"key": "recurringSubscriptionInfo_automaticRenew",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "decision_publicSignature",
+							"value": "mEhlMRLCsuPimhp50ElrY94zFyc=",
+							"type": "text"
+						},
+						{
+							"key": "billTo_country",
+							"value": "DE",
+							"type": "text"
+						},
+						{
+							"key": "billTo_lastName",
+							"value": "ishaan",
+							"type": "text"
+						},
+						{
+							"key": "billTo_street2",
+							"value": "spandau",
+							"type": "text"
+						},
+						{
+							"key": "ccAuthReply_cvCode",
+							"value": "M",
+							"type": "text"
+						},
+						{
+							"key": "billTo_street1",
+							"value": "ishaan ",
+							"type": "text"
+						},
+						{
+							"key": "shipTo_shippingMethod",
+							"value": "standard-gross",
+							"type": "text"
+						},
+						{
+							"key": "orderPage_transactionType",
+							"value": "subscription",
+							"type": "text"
+						},
+						{
+							"key": "orderPage_declineResponseURL",
+							"value": "sampleUrl",
+							"type": "text"
+						},
+						{
+							"key": "orderPage_merchantURLPostAddress",
+							"value": "https://localhost:9002/occ/v2/electronics-spa/integration/merchant_callback",
+							"type": "text"
+						},
+						{
+							"key": "card_cardType",
+							"value": "master",
+							"type": "text"
+						},
+						{
+							"key": "shipTo_city",
+							"value": "ishaan",
+							"type": "text"
+						},
+						{
+							"key": "recurringSubscriptionInfo_startDate",
+							"value": "20230521",
+							"type": "text"
+						},
+						{
+							"key": "shipTo_street1",
+							"value": "ishaan",
+							"type": "text"
+						},
+						{
+							"key": "recurringSubscriptionInfo_frequency",
+							"value": "on-demand",
+							"type": "text"
+						},
+						{
+							"key": "shipTo_postalCode",
+							"value": "11112",
+							"type": "text"
+						},
+						{
+							"key": "currency",
+							"value": "USD",
+							"type": "text"
+						},
+						{
+							"key": "orderPage_signaturePublic",
+							"value": "ziYqjncH2sHOxxbRQWL237aWbNM=",
+							"type": "text"
+						},
+						{
+							"key": "reasonCode",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "shipTo_country",
+							"value": "DE",
+							"type": "text"
+						},
+						{
+							"key": "card_accountNumber",
+							"value": "************4123",
+							"type": "text"
+						},
+						{
+							"key": "orderPage_serialNumber",
+							"value": "your_serial_number",
+							"type": "text"
+						},
+						{
+							"key": "recurringSubscriptionInfo_signaturePublic",
+							"value": "KCmgSCugn+8Qw9xDnpjKJ3OS3Zc=",
+							"type": "text"
+						},
+						{
+							"key": "paySubscriptionCreateReply_subscriptionID",
+							"value": "44f612bb-1884-4ca4-8bf8-613871261cfe",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "decision",
+							"value": "ACCEPT",
+							"type": "text"
+						},
+						{
+							"key": "recurringSubscriptionInfo_numberOfPayments",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "shipTo_firstName",
+							"value": "Ishaan",
+							"type": "text"
+						},
+						{
+							"key": "card_nameOnCard",
+							"value": "ishaan",
+							"type": "text"
+						},
+						{
+							"key": "orderPage_colorScheme",
+							"value": "blue",
+							"type": "text"
+						},
+						{
+							"key": "orderPage_receiptResponseURL",
+							"value": "sampleUrl",
+							"type": "text"
+						},
+						{
+							"key": "billTo_postalCode",
+							"value": "11111",
+							"type": "text"
+						},
+						{
+							"key": "orderPage_version",
+							"value": "7",
+							"type": "text"
+						},
+						{
+							"key": "billTo_firstName",
+							"value": "Ishaan",
+							"type": "text"
+						},
+						{
+							"key": "orderPage_timestamp",
+							"value": "1684670296457",
+							"type": "text"
+						},
+						{
+							"key": "orderPage_ignoreCVN",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "card_expirationMonth",
+							"value": "06",
+							"type": "text"
+						},
+						{
+							"key": "recurringSubscriptionInfo_amount",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "merchantID",
+							"value": "your_merchant_id",
+							"type": "text"
+						},
+						{
+							"key": "orderPage_cancelResponseURL",
+							"value": "sampleUrl",
+							"type": "text"
+						},
+						{
+							"key": "card_expirationYear",
+							"value": "2029",
+							"type": "text"
+						},
+						{
+							"key": "paySubscriptionCreateReply_subscriptionIDPublicSignature",
+							"value": "mO9zEoUOOxDwBpKRy+1vol5XnCU=",
+							"type": "text"
+						},
+						{
+							"key": "orderPage_ignoreAVS",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "defaultPayment",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "savePaymentInfo",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{BaseUrl}}/occ/v2/electronics-spa/users/current/carts/{{CartId}}/payment/sop/response?lang=en&curr=USD",
+					"protocol": "https",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"occ",
+						"v2",
+						"electronics-spa",
+						"users",
+						"current",
+						"carts",
+						"{{CartId}}",
+						"payment",
+						"sop",
+						"response"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "en"
+						},
+						{
+							"key": "curr",
+							"value": "USD"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PlaceOrder",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response status 201\",function(){\r",
+							"    pm.expect(pm.response.code).to.equal(201)\r",
+							"})\r",
+							"pm.test(\"response time\",function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(10000)\r",
+							"})\r",
+							"pm.test(\"response header\",function(){\r",
+							"    pm.response.to.have.header('Content-Type')\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-US,en;q=0.9,ja;q=0.8"
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer {{AccessToken}}"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Origin",
+						"value": "https://spartacus-demo.eastus.cloudapp.azure.com"
+					},
+					{
+						"key": "Referer",
+						"value": "https://spartacus-demo.eastus.cloudapp.azure.com/"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors",
+						"disabled": true
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-site",
+						"disabled": true
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36",
+						"disabled": true
+					},
+					{
+						"key": "X-Anonymous-Consents",
+						"value": "%5B%7B%22templateCode%22%3A%22MARKETING_NEWSLETTER%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%2C%7B%22templateCode%22%3A%22PROFILE%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%2C%7B%22templateCode%22%3A%22STORE_USER_INFORMATION%22%2C%22templateVersion%22%3A0%2C%22consentState%22%3Anull%7D%5D",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"113\", \"Chromium\";v=\"113\", \"Not-A.Brand\";v=\"24\"",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\"",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{BaseUrl}}/occ/v2/electronics-spa/users/current/orders?fields=FULL&cartId={{CartId}}&termsChecked=true&lang=en&curr=USD",
+					"protocol": "https",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"occ",
+						"v2",
+						"electronics-spa",
+						"users",
+						"current",
+						"orders"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "FULL"
+						},
+						{
+							"key": "cartId",
+							"value": "{{CartId}}"
+						},
+						{
+							"key": "termsChecked",
+							"value": "true"
+						},
+						{
+							"key": "lang",
+							"value": "en"
+						},
+						{
+							"key": "curr",
+							"value": "USD"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
