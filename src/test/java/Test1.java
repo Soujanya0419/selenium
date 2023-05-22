@@ -19,5 +19,6 @@ public class Test1 {
         driver.get("https://www.google.com");
         Thread.sleep(2000);
         driver.close();
+        System.out.println("**********************Doe***********************");
     }
 }
