@@ -15,42 +15,6 @@ services:
     ports:
       - "6900:5900"
 
-  chrome-2:
-    image: selenium/node-chrome:4.8.2-20230325
-    shm_size: 2gb
-    depends_on:
-      - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-    ports:
-      - "6903:5900"
-
-  chrome-3:
-    image: selenium/node-chrome:4.8.2-20230325
-    shm_size: 2gb
-    depends_on:
-      - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-    ports:
-      - "6904:5900"
-
-  chrome-4:
-    image: selenium/node-chrome:4.8.2-20230325
-    shm_size: 2gb
-    depends_on:
-      - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-    ports:
-      - "6905:5900"
-
   selenium-hub:
     image: selenium/hub:4.8.2-20230325
     ports:
